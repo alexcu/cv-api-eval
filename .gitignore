@@ -103,15 +103,6 @@ venv.bak/
 
 
 # End of https://www.gitignore.io/api/python
-
-# Do not commit .env
 .env
-
-# Do not commit results
-**/*_results.csv
-
-# Do not commit our run script
-run.sh
-
 log/
 csv/
