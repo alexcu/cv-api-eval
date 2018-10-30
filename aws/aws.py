@@ -35,5 +35,5 @@ if __name__ == "__main__":
     )
     for label in response['Labels']:
       print("{},{},{},{},{}".format(timestamp, image_desc, image_url, label['Name'].lower(), label['Confidence'] * 0.01))
-    with open("logs/aws/{}_{}.json".format(timestamp.isoformat(), image_desc), 'w') as log:
+    with open("log/aws/{}_{}.json".format(timestamp.isoformat(), image_desc), 'w') as log:
       dump(response, log)

@@ -110,9 +110,8 @@ venv.bak/
 # Do not commit results
 **/*_results.csv
 
-# Do not commit test images or originals
-images_test.csv
-original_images/
-
-# Do not commut our run script
+# Do not commit our run script
 run.sh
+
+log/
+csv/

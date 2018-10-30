@@ -30,5 +30,5 @@ if __name__ == "__main__":
     response.raise_for_status()
     for label in response.json()['tags']:
       print("{},{},{},{},{}".format(timestamp, image_desc, image_url, label['name'], label['confidence']))
-    with open("logs/azure/{}_{}.json".format(timestamp.isoformat(), image_desc), 'w') as log:
+    with open("log/azure/{}_{}.json".format(timestamp.isoformat(), image_desc), 'w') as log:
       log.write(response.text)
