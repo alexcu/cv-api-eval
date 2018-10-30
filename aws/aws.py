@@ -5,6 +5,7 @@ from dotenv import load_dotenv, find_dotenv
 from os import getenv
 from sys import argv
 from pathlib import Path
+from json import dump
 
 if __name__ == "__main__":
   assert argv[1] is not None
@@ -34,3 +35,5 @@ if __name__ == "__main__":
     )
     for label in response['Labels']:
       print("{},{},{},{},{}".format(timestamp, image_desc, image_url, label['Name'].lower(), label['Confidence'] * 0.01))
+    with open("logs/aws/{}_{}.json".format(timestamp.isoformat(), image_desc), 'w') as log:
+      dump(response, log)

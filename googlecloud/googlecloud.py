@@ -3,6 +3,7 @@ import datetime
 from google.cloud import vision
 from google.cloud.vision import types
 from google.oauth2 import service_account
+from google.protobuf.json_format import MessageToJson
 from dotenv import load_dotenv, find_dotenv
 from os import getenv
 from sys import argv
@@ -42,3 +43,6 @@ if __name__ == "__main__":
     response = client.label_detection(image=types.Image(content=bytes))
     for label in response.label_annotations:
       print("{},{},{},{},{}".format(timestamp, image_desc, image_url, label.description, label.score))
+    with open("logs/googlecloud/{}_{}.json".format(timestamp.isoformat(), image_desc), 'w') as log:
+      log.write(MessageToJson(response, preserving_proto_field_name=True))
+
