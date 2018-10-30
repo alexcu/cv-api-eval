@@ -18,7 +18,7 @@ if __name__ == "__main__":
   load_dotenv(find_dotenv())
 
   subscription_key = getenv("AZURE_SUBSCRIPTION_KEY")
-  vision_base_url = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/"
+  vision_base_url = "https://australiaeast.api.cognitive.microsoft.com/vision/v1.0/"
   vision_analyze_url = vision_base_url + "analyze"
 
   timestamp = datetime.datetime.utcnow()
