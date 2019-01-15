@@ -85,6 +85,8 @@ AWS:	$(wc -l < $aws_temp)
 Google:	$(wc -l < $google_temp)
 Azure:	$(wc -l < $azure_temp)
 
+Host:  $(hostname)
+
 AWS Time Start:	$aws_start_time_fmt
 AWS Time End:	$aws_end_time_fmt
 AWS Duration:	$(convertsecs $aws_elapsed_seconds)
