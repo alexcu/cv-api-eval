@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 convertsecs() {
  ((h=${1}/3600))
@@ -10,10 +10,16 @@ convertsecs() {
 mkdir -p csv/aws csv/googlecloud csv/azure
 mkdir -p log/aws log/googlecloud log/azure
 
+#echo "PWD IS: $(pwd)"
+echo Starting at: $(date $T)
+
 src_images=$1 #images_test.csv,images_custom.csv,images_cocoval2017.csv
 src_images_type=${src_images%.*}
 mail_rcpt=$2 #xxxx@deakin.edu.au
 mail_user=$3 #xxxx@gmail.com:password
+
+#echo the head is
+#head $src_images
 
 run_ts=$(date +%Y-%m-%dT%H:%M:%S%z)
 mail_temp=$(mktemp)
@@ -65,7 +71,7 @@ end_time_fmt=$(date $T)
 elapsed_seconds="$(($end_time-$start_time))"
 
 cat > $mail_temp << EOF
-Subject: Vision API Test - Success
+Subject: Vision API Test - Success [$src_images]
 MIME-Version: 1.0
 Content-Type: multipart/mixed; boundary="MULTIPART-MIXED-BOUNDARY"
 
@@ -128,3 +134,6 @@ cat $google_final >> $google_all
 cat $azure_final >> $azure_all
 
 curl --url 'smtps://smtp.gmail.com:465' --ssl-reqd --mail-rcpt "$mail_rcpt"  --upload-file $mail_temp --user "$mail_user" --insecure
+
+echo Finished at $(date $T)
+echo -----------------------------

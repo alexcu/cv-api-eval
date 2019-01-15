@@ -106,3 +106,4 @@ venv.bak/
 .env
 log/
 csv/
+cronjob.sh
