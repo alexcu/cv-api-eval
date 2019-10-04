@@ -104,6 +104,6 @@ venv.bak/
 
 # End of https://www.gitignore.io/api/python
 .env
-log/
 csv/
+log/**/*.json
 cronjob.sh
