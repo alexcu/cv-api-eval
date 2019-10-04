@@ -42,7 +42,7 @@ if __name__ == "__main__":
     bytes = urllib.request.urlopen(image_url).read()
     response = client.label_detection(image=types.Image(content=bytes))
     for label in response.label_annotations:
-      print("{},{},{},{},{}".format(timestamp, image_desc, image_url, label.description, label.score))
+      print("{},{},{},{},{}".format(timestamp, image_desc, image_url, label.description.lower(), label.score))
     with open("log/googlecloud/{}_{}.json".format(timestamp.isoformat(), image_desc), 'w') as log:
       log.write(MessageToJson(response, preserving_proto_field_name=True))
 
