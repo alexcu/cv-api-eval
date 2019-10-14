@@ -13,9 +13,10 @@ if __name__ == "__main__":
   assert argv[1] is not None
   images = {}
   with open(argv[1]) as lines:
+    lines.readline()
     for line in lines:
       line = line.strip()
-      desc, url = line.split(',')
+      desc, url, _ = line.split(',')
       images[desc] = url
 
   load_dotenv(find_dotenv())
